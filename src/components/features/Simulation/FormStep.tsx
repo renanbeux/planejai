@@ -21,8 +21,6 @@ interface ActionsButtonsProps {
   onBack: () => void
   onNext: (value: string) => void
   hideBackButton?: boolean
-  currentStep: number
-  totalSteps: number
 }
 
 export function FormStep({
@@ -34,8 +32,6 @@ export function FormStep({
   hideBackButton,
   onBack,
   onNext,
-  currentStep,
-  totalSteps,
 }: FormStepProps & ActionsButtonsProps) {
   const [inputValue, setInputValue] = useState('')
 

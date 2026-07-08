@@ -1,17 +1,25 @@
-export function formatCurrencyMask(value: string | number): string {
-  if (!value) return '';
+export function formatCurrencyMask(value: string): string {
+  const digits = value.replace(/\D/g, '')
 
-  // Remove non-digit characters
-  const numericValue = value.toString().replace(/\D/g, '');
+  if (!digits) {
+    return ''
+  }
 
-  if (numericValue === '') return '';
+  const number = Number(digits) / 100
 
-  // Convert to number and divide by 100 for cents
-  const amount = Number(numericValue) / 100;
+  if (isNaN(number)) {
+    return ''
+  }
 
-  // Format as BRL currency without the R$ prefix since the Input might already have the prefix
-  return new Intl.NumberFormat('pt-BR', {
+  return number.toLocaleString('pt-BR', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(amount);
+  })
+}
+
+export function parseCurrency(value: string): number {
+  return (
+    parseFloat(value.replace(/\./g, '').replace(',', '.').replace('R$', '')) ||
+    0
+  )
 }
