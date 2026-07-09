@@ -53,3 +53,39 @@ export const getInsight = async (prompt: string) => {
   const json = response.candidates[0].content.parts[0].text
   return JSON.parse(json) as InsightData
 }
+
+export interface ChatMessageData {
+  role: 'user' | 'model'
+  text: string
+}
+
+export const sendChatMessage = async (
+  history: ChatMessageData[],
+  newMessage: string,
+  contextPrompt: string
+) => {
+  const contents = [
+    { role: 'user', parts: [{ text: contextPrompt }] },
+    { role: 'model', parts: [{ text: 'Entendido. Estou pronto para ajudar.' }] },
+    ...history.map(msg => ({
+      role: msg.role,
+      parts: [{ text: msg.text }]
+    })),
+    { role: 'user', parts: [{ text: newMessage }] }
+  ]
+
+  const response = await fetch(GEMINI_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents,
+    }),
+  })
+
+  if (!response.ok) {
+    throw new Error(`Erro na requisição de chat: ${response.status}`)
+  }
+
+  const data = (await response.json()) as GeminiResponse
+  return data.candidates[0].content.parts[0].text
+}

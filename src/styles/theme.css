@@ -11,6 +11,7 @@
     --muted-foreground: #64749a;
     --secondary-button: #f1f5f9;
     --input: #fcfcfe;
+    --input-ia: #fcfcfe;
     --skeleton-base-color: #e1e1f1;
     --skeleton-highlight-color: #c5c5df;
   }
@@ -26,6 +27,7 @@
     --muted-foreground: #ad9fc8;
     --secondary-button: #27272a;
     --input: #232131;
+    --input-ia: rgba(146, 92, 240, 0.2);;
     --skeleton-base-color: #3e3e42;
     --skeleton-highlight-color: #434052;
   }
@@ -42,6 +44,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-secondary-button: var(--secondary-button);
   --color-input: var(--input);
+  --color-input-ia: var(--input-ia);
   --color-red-500: #ef4444;
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --color-skeleton-base: var(--skeleton-base-color);

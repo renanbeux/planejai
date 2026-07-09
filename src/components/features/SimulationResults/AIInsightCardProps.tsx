@@ -6,6 +6,7 @@ import { useInsight } from '@/hooks/useInsight'
 
 import { Content } from '../Insights/Content'
 import { Error } from '../Insights/Error'
+import { Chat } from '../Insights/Chat'
 
 interface AIInsightCardProps {
   simulationId: string
@@ -45,7 +46,12 @@ export function AIInsightsCard({ simulationId }: AIInsightCardProps) {
           }}
         />
       )}
-      {!isLoading && insight && !error && <Content insight={insight} />}
+      {!isLoading && insight && !error && (
+        <div className="flex flex-col gap-6 lg:scrollbar-thin lg:max-h-[500px] lg:overflow-y-auto lg:pr-2 lg:[scrollbar-color:var(--border)_transparent]">
+          <Content insight={insight} />
+          <Chat simulationId={simulationId} />
+        </div>
+      )}
     </div>
   )
 }
