@@ -54,7 +54,7 @@ export const simulationFormSteps = [
     title: 'Nome da meta',
     question: 'Qual o objetivo que você deseja alcançar?',
     inputProps: {
-      placeholder: 'ex: Viagem para o Japão',
+      placeholder: 'ex: Viagem para Disney',
       maxLength: 50,
     },
   },

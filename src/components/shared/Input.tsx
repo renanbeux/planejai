@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import type { InputHTMLAttributes } from 'react'
 
 import { Divider } from './Divider'
@@ -7,7 +8,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   suffix?: string
 }
 
-export function Input({ prefix, suffix, ...rest }: InputProps) {
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ prefix, suffix, ...rest }, ref) => {
   return (
     <div className="bg-input flex items-center rounded-2xl p-4 shadow-[4px_4px_18px_0px_rgba(0,0,0,0.2)]">
       {prefix && (
@@ -19,6 +20,7 @@ export function Input({ prefix, suffix, ...rest }: InputProps) {
         </>
       )}
       <input
+        ref={ref}
         className="text-foreground placeholder:text-muted-foreground w-full bg-transparent text-sm outline-none"
         autoFocus
         {...rest}
@@ -33,4 +35,5 @@ export function Input({ prefix, suffix, ...rest }: InputProps) {
       )}
     </div>
   )
-}
+})
+Input.displayName = 'Input'

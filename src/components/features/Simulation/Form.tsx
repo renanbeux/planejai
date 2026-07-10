@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { type SimulationFormData, simulationFormSteps } from '@/data/simulation'
@@ -18,7 +18,7 @@ export const SimulationForm = () => {
   const totalSteps = simulationFormSteps.length
   const currentStep = simulationFormSteps[currentStepIndex]
 
-  const handleNextStep = (value: string) => {
+  const handleNextStep = useCallback((value: string) => {
     const updatedFormData = { ...formData, [currentStep.id]: value }
     setFormData(updatedFormData)
 
@@ -31,15 +31,15 @@ export const SimulationForm = () => {
     }
 
     setCurrentStepIndex((prev) => prev + 1)
-  }
+  }, [formData, currentStep.id, currentStepIndex, totalSteps, saveFormData, navigate])
 
-  const handlePreviousStep = () => {
+  const handlePreviousStep = useCallback(() => {
     if (currentStepIndex === 0) {
       return
     }
 
     setCurrentStepIndex((prev) => prev - 1)
-  }
+  }, [currentStepIndex])
 
   return (
     <>

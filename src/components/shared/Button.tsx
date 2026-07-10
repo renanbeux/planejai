@@ -1,7 +1,8 @@
+import { forwardRef } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import type { ButtonHTMLAttributes } from 'react'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: 'primary' | 'secondary' | 'ghost'
   icon?: LucideIcon
 }
@@ -15,15 +16,16 @@ const variantClasses = {
   ghost: 'rounded-lg text-foreground',
 }
 
-export function Button({
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   variant,
   icon: Icon,
   children,
   className,
   ...props
-}: ButtonProps) {
+}, ref) => {
   return (
     <button
+      ref={ref}
       {...props}
       className={[baseClasses, variantClasses[variant], className].join(' ')}
     >
@@ -31,4 +33,5 @@ export function Button({
       {children}
     </button>
   )
-}
+})
+Button.displayName = 'Button'

@@ -1,3 +1,5 @@
+import { useCallback } from 'react'
+
 import {
   type SimulationFormData,
   type SimulationRecord,
@@ -5,8 +7,18 @@ import {
 
 const LOCAL_STORAGE_KEY = 'simulation-data'
 
+const safeParseJSON = (data: string | null): SimulationRecord[] => {
+  if (!data) return []
+  try {
+    return JSON.parse(data) as SimulationRecord[]
+  } catch (error) {
+    console.error('Failed to parse simulation data from localStorage:', error)
+    return []
+  }
+}
+
 export const useSimulationStorage = () => {
-  const saveFormData = (formData: SimulationFormData) => {
+  const saveFormData = useCallback((formData: SimulationFormData) => {
     const id = crypto.randomUUID()
     const record: SimulationRecord = { 
       ...formData, 
@@ -15,7 +27,7 @@ export const useSimulationStorage = () => {
     }
 
     const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
-    const savedData = storage ? (JSON.parse(storage) as SimulationRecord[]) : []
+    const savedData = safeParseJSON(storage)
 
     localStorage.setItem(
       LOCAL_STORAGE_KEY,
@@ -23,46 +35,45 @@ export const useSimulationStorage = () => {
     )
 
     return id
-  }
+  }, [])
 
-  const getFormData = (id: string) => {
+  const getFormData = useCallback((id: string) => {
     const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
-
     if (!storage) {
       return null
     }
 
-    const savedData = JSON.parse(storage) as SimulationRecord[]
+    const savedData = safeParseJSON(storage)
     return savedData.find((record) => record.id === id) || null
-  }
+  }, [])
 
-  const updateSimulation = (id: string, data: SimulationRecord) => {
+  const updateSimulation = useCallback((id: string, data: SimulationRecord) => {
     const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
-    const savedData = storage ? (JSON.parse(storage) as SimulationRecord[]) : []
+    const savedData = safeParseJSON(storage)
 
     const updated = savedData.map((record) =>
       record.id === id ? { ...data } : record,
     )
 
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated))
-  }
+  }, [])
 
-  const getAllSimulations = () => {
+  const getAllSimulations = useCallback(() => {
     const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (!storage) {
       return []
     }
-    return JSON.parse(storage) as SimulationRecord[]
-  }
+    return safeParseJSON(storage)
+  }, [])
 
-  const deleteSimulation = (id: string) => {
+  const deleteSimulation = useCallback((id: string) => {
     const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (!storage) return
 
-    const savedData = JSON.parse(storage) as SimulationRecord[]
+    const savedData = safeParseJSON(storage)
     const updated = savedData.filter((record) => record.id !== id)
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated))
-  }
+  }, [])
 
   return { 
     saveFormData, 
