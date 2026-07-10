@@ -1,6 +1,14 @@
+<img width="687" height="632" alt="dio1" src="https://github.com/user-attachments/assets/180f2f5a-5836-4b75-a1a5-4622d38439a8" />
+
+<img width="1901" height="935" alt="dio2" src="https://github.com/user-attachments/assets/f21a816d-ac52-4a32-af85-ee93ba4a612c" />
+
+<img width="781" height="622" alt="dio3" src="https://github.com/user-attachments/assets/61fa9308-70fd-448f-be02-99f0c55c4597" />
+
+<img width="1917" height="932" alt="dio4" src="https://github.com/user-attachments/assets/87c4d9df-d92a-4170-a45f-056c976374e3" />
+
 # Planeja Aí (planejai) 🎯
 
-Acesse ele funcionando aqui: 
+**Acesse ele funcionando aqui: https://renan-beux-planejai.netlify.app/**
 
 ## O que o projeto faz?
 O **Planeja Aí** é um simulador financeiro inteligente. Ele ajuda você a se planejar para alcançar uma meta ou realizar um sonho (como uma viagem, comprar um carro, etc.). Você informa sua renda mensal, seus custos fixos, dívidas e o valor e prazo da sua meta. Com esses dados, o sistema calcula quanto você precisa economizar mensalmente e, utilizando Inteligência Artificial (Google Gemini), gera um insight financeiro personalizado com dicas de viabilidade, sugestões de economia extra e motivação.
@@ -47,4 +55,4 @@ Para ver o sistema e as novas melhorias funcionando na prática, siga este fluxo
 5. **Teste o Chat:** Na seção do Insight, envie uma mensagem no Chat como: *"Onde posso cortar gastos para atingir a meta mais rápido?"* e aguarde a resposta personalizada da IA.
 6. **Verifique o Histórico:** Acesse a rota de histórico (clicando no link de navegação ou indo em `/historico`) e certifique-se de que a sua simulação foi salva corretamente. Você pode apagar a simulação caso queira testar a funcionalidade de exclusão.
 
-Acesse ele funcionando aqui: 
+**Acesse ele funcionando aqui: https://renan-beux-planejai.netlify.app/**
