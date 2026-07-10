@@ -1,3 +1,4 @@
+<div align="center">
 <img width="687" height="632" alt="dio1" src="https://github.com/user-attachments/assets/180f2f5a-5836-4b75-a1a5-4622d38439a8" />
 
 <img width="1901" height="935" alt="dio2" src="https://github.com/user-attachments/assets/f21a816d-ac52-4a32-af85-ee93ba4a612c" />
@@ -5,6 +6,7 @@
 <img width="781" height="622" alt="dio3" src="https://github.com/user-attachments/assets/61fa9308-70fd-448f-be02-99f0c55c4597" />
 
 <img width="1917" height="932" alt="dio4" src="https://github.com/user-attachments/assets/87c4d9df-d92a-4170-a45f-056c976374e3" />
+</div>
 
 # Planeja Aí (planejai) 🎯
 
